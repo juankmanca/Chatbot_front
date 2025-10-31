@@ -16,8 +16,8 @@ def chat_fn(message, history):
 
 chatbot = gr.ChatInterface(
     fn=chat_fn,
-    title="Chatbot Universitario 🎓",
-    description="Prototipo de chat conectado al backend FastAPI",
+    title="Conversa 🎓",
+    description="Prototipo de chat con para asistencia educativa.",
     theme="soft",
 )
 
