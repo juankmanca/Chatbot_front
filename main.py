@@ -29,5 +29,10 @@ chatbot = gr.ChatInterface(
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 7860))
-    chatbot.launch(server_name="0.0.0.0", server_port=port)
-
+    chatbot.launch(
+            server_name="0.0.0.0",
+            server_port=port,
+            share=False,         # no generar link externo
+            show_error=True,     # muestra errores en consola
+            inline=False         # evita modo notebook
+        )
