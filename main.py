@@ -22,7 +22,8 @@ chatbot = gr.ChatInterface(
     title="Conversa 🎓",
     description="Prototipo de chat para asistencia educativa.",
     theme="default",
-    examples=[[greeting]]  # saludo visible al iniciar
+    examples=[[greeting]],
+    type="messages"  # corrige el warning
 )
 
 if __name__ == "__main__":
