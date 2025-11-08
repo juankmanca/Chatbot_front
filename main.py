@@ -1,7 +1,7 @@
 import gradio as gr
 import requests
 
-API_URL = "http://127.0.0.1:8000/predict/"
+API_URL = "https://chatbotback-production.up.railway.app/predict/"
 
 def chat_fn(message, history):
     try:
@@ -21,7 +21,7 @@ chatbot = gr.ChatInterface(
     fn=chat_fn,
     title="Conversa 🎓",
     description="Prototipo de chat para asistencia educativa.",
-    theme="soft",
+    theme="default",
     examples=[[greeting]]  # saludo visible al iniciar
 )
 
