@@ -2,3 +2,4 @@ gradio
 requests
 fastapi
 uvicorn
+gunicorn
