@@ -1,4 +1,4 @@
-### 💬 Gradio (Interfaz del Chatbot)
+### 💬 Gradio (Interfaz del Chatbot).
 
 Gradio se utiliza como una **interfaz rápida y visual** para probar el chatbot sin necesidad de desarrollar un frontend complejo.
 Permite crear una ventana de conversación interactiva en pocos minutos y conectarla al backend desarrollado en FastAPI.
