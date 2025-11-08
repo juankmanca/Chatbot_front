@@ -26,4 +26,7 @@ chatbot = gr.ChatInterface(
 )
 
 if __name__ == "__main__":
-    chatbot.launch()
+    import os
+    port = int(os.environ.get("PORT", 7860))
+    chatbot.launch(server_name="0.0.0.0", server_port=port)
+
