@@ -1,38 +1,17 @@
+from fastapi import FastAPI
 import gradio as gr
-import requests
 
-API_URL = "https://chatbotback-production.up.railway.app/predict/"
+# interfaz de ChatInterface de Gradio
+from gradio_ui import chatbot 
 
-def chat_fn(message, history):
-    try:
-        response = requests.post(API_URL, json={"message": message})
-        if response.ok:
-            data = response.json()
-            return data["respuesta"]
-        else:
-            return "Error al comunicarse con el servidor."
-    except Exception as e:
-        return f"Error de conexión: {e}"
+# Inicializa la aplicación FastAPI
+app = FastAPI(title="Conversa")
 
-# Agregar saludo inicial
-greeting = "¡Hola! Soy Conversa, tu asistente educativo. ¿En qué puedo ayudarte hoy?"
+# Monta la aplicación de Gradio en la ruta raíz ("/")
+# Gradio se encargará de todas las rutas a partir de este punto.
+app = gr.mount_gradio_app(app, chatbot, path="/") 
 
-chatbot = gr.ChatInterface(
-    fn=chat_fn,
-    title="Conversa 🎓",
-    description="Prototipo de chat para asistencia educativa.",
-    theme="default",
-    examples=[[greeting]],
-    type="messages"  # corrige el warning
-)
-
-if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 7860))
-    chatbot.launch(
-            server_name="0.0.0.0",
-            server_port=port,
-            share=False,         # no generar link externo
-            show_error=True,     # muestra errores en consola
-            inline=False         # evita modo notebook
-        )
+# El endpoint de prueba opcional lo puedes mover a otra ruta, por ejemplo, "/health"
+@app.get("/health")
+def health_check():
+    return {"status": "ok", "message": "API and Gradio mounted successfully"}
